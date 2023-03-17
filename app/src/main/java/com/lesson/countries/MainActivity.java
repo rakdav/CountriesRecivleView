@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         SetData();
         RecyclerView recyclerView=findViewById(R.id.rv);
-        CountryAdapter adapter=new CountryAdapter(this,list);
+        CountryAdapter.OnCountryClickListener onCountryClickListener=new CountryAdapter.OnCountryClickListener() {
+            @Override
+            public void onCountryClick(Country country, int position) {
+                Toast.makeText(MainActivity.this,list.get(position).getName(),Toast.LENGTH_LONG).show();
+            }
+        };
+        CountryAdapter adapter=new CountryAdapter(this,list,onCountryClickListener);
         recyclerView.setAdapter(adapter);
     }
     private void SetData()

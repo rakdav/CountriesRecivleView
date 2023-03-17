@@ -13,12 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHolder> {
+    interface OnCountryClickListener{
+        void onCountryClick(Country country,int position);
+    }
+    private final OnCountryClickListener onCountryClickListener;
     private final LayoutInflater inflater;
     private final List<Country> countries;
 
-    public CountryAdapter(Context context, List<Country> countries) {
+    public CountryAdapter(Context context, List<Country> countries,OnCountryClickListener onCountryClickListener) {
         this.inflater = LayoutInflater.from(context);
         this.countries = countries;
+        this.onCountryClickListener=onCountryClickListener;
     }
 
     @NonNull
@@ -34,6 +39,12 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
         holder.flagView.setImageResource(country.getFlag());
         holder.nameView.setText(country.getName());
         holder.capitalView.setText(country.getCapital());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onCountryClickListener.onCountryClick(country,position);
+            }
+        });
     }
 
     @Override
