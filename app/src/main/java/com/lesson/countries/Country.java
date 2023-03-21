@@ -1,6 +1,8 @@
 package com.lesson.countries;
 
-public class Country
+import java.io.Serializable;
+
+public class Country implements Serializable
 {
     private int flag;
     private String name;

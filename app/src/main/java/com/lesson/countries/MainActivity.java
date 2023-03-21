@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCountryClick(Country country, int position) {
                 Intent intent=new Intent(MainActivity.this,CountryActivity.class);
-
+                intent.putExtra(Country.class.getSimpleName(),country);
+                startActivity(intent);
             }
         };
         CountryAdapter adapter=new CountryAdapter(this,list,onCountryClickListener);
