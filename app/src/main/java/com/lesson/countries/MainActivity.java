@@ -3,6 +3,7 @@ package com.lesson.countries;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -19,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
         CountryAdapter.OnCountryClickListener onCountryClickListener=new CountryAdapter.OnCountryClickListener() {
             @Override
             public void onCountryClick(Country country, int position) {
-                Toast.makeText(MainActivity.this,list.get(position).getName(),Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(MainActivity.this,CountryActivity.class);
+
             }
         };
         CountryAdapter adapter=new CountryAdapter(this,list,onCountryClickListener);

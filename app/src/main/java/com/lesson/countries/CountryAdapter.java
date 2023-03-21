@@ -1,5 +1,6 @@
 package com.lesson.countries;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +35,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Country country=countries.get(position);
         holder.flagView.setImageResource(country.getFlag());
         holder.nameView.setText(country.getName());
@@ -42,6 +43,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 onCountryClickListener.onCountryClick(country,position);
             }
         });

@@ -29,4 +29,20 @@ public class Country
     public int getPopulation() {
         return population;
     }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCapital(String capital) {
+        this.capital = capital;
+    }
+
+    public void setPopulation(int population) {
+        this.population = population;
+    }
 }
